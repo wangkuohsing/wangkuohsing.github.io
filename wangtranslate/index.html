@@ -387,11 +387,26 @@
             transform: translateY(-10px);
         }
 
-        .social-button img {
+        .social-icon {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .fb-icon {
+            background: #1877F2;
+        }
+
+        .line-icon {
+            background: #00C300;
         }
 
         .social-tooltip {
@@ -834,7 +849,7 @@
     <div class="social-float">
         <!-- Facebook浮窗 -->
         <div class="social-button" onclick="openFacebook()">
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiIGZpbGw9IiMxODc3RjIiLz4KPHBhdGggZD0iTTM1IDI1SDMwVjIwSDI1VjI1SDIwVjMwSDI1VjQwSDMwVjMwSDM1VjI1WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Facebook">
+            <div class="social-icon fb-icon">F</div>
             <div class="social-tooltip fb-tooltip">
                 <h4>點擊前往Facebook</h4>
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNzUiIHI9IjUwIiBmaWxsPSIjMTg3N0YyIi8+CjxwYXRoIGQ9Ik04Ny41IDQ1SDYyLjVWNjBINzUuNVY3NUg2Mi41VjkwSDg3LjVWNzVINzUuNVY2MEg4Ny41VjQ1WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Facebook Icon">
@@ -843,7 +858,7 @@
         
         <!-- LINE浮窗 -->
         <div class="social-button" onclick="openLine()">
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiIGZpbGw9IiMwMEMzMDAiLz4KPHBhdGggZD0iTTE1IDI1QzE1IDIyLjIzODYgMTcuMjM4NiAyMCAyMCAyMEg0MEM0Mi43NjE0IDIwIDQ1IDIyLjIzODYgNDUgMjVWMzVDNDUgMzcuNzYxNCA0Mi43NjE0IDQwIDQwIDQwSDIwQzE3LjIzODYgNDAgMTUgMzcuNzYxNCAxNSAzNVYyNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yMCAyNUgyNVYzMEgyMFYyNVoiIGZpbGw9IiMwMEMzMDAiLz4KPHBhdGggZD0iTTI1IDI1SDMwVjMwSDI1VjI1WiIgZmlsbD0iIzAwQzMwMCIvPgo8cGF0aCBkPSJNMzAgMjVIMzVWMzBIMzBWMjVaIiBmaWxsPSIjMDBDMzAwIi8+CjxwYXRoIGQ9Ik0zNSAyNUg0MFYzMEgzNVYyNVoiIGZpbGw9IiMwMEMzMDAiLz4KPC9zdmc+" alt="LINE">
+            <div class="social-icon line-icon">L</div>
             <div class="social-tooltip line-tooltip">
                 <h4>掃描QR Code加入LINE</h4>
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://line.me/ti/p/cECJQFTD_Y" alt="LINE QR Code">
