@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王國興地政士事務所 - 專業地政服務</title>
+    <title>王國興地政士事務所官網</title>
     <style>
+        /* 字體統一微軟正黑體 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Microsoft JhengHei', Arial, sans-serif !important;
         }
 
         body {
@@ -454,6 +456,24 @@
             color: #1877F2;
         }
 
+        .tooltip-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+        }
+
+        .fb-tooltip-icon {
+            background: #1877F2;
+        }
+
         /* 人員及地點區塊 */
         #contact {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
@@ -679,19 +699,9 @@
             <h2 class="section-title fade-in">獲得獎項及殊榮</h2>
             <div class="awards-grid">
                 <div class="award-card fade-in">
-                    <div class="award-icon">👑</div>
-                    <h3>2025年 全台特優地政士獎</h3>
-                    <p>榮獲全國最高榮譽「全台特優地政士」獎，持續在地政服務領域保持卓越表現。</p>
-                </div>
-                <div class="award-card fade-in">
                     <div class="award-icon">🏆</div>
                     <h3>2024年 全台特優地政士獎</h3>
                     <p>榮獲全國最高榮譽「全台特優地政士」獎，肯定我們在地政服務領域的卓越表現。</p>
-                </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">⭐</div>
-                    <h3>2024年 竹苗區特優地政士獎</h3>
-                    <p>榮獲永慶集團「竹苗區特優地政士」獎，展現在地區性服務的專業實力。</p>
                 </div>
                 <div class="award-card fade-in">
                     <div class="award-icon">📜</div>
@@ -813,7 +823,42 @@
         </div>
     </section>
 
-    <!-- 人員及地點區塊 -->
+    <!-- 專訪影片區塊 -->
+    <section id="interview" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">專訪影片</h2>
+            <div class="business-content">
+                <div class="fade-in" style="text-align:left;">
+                    <h3>【青年購屋貸款】青年首購。青年首購條件？首購利率？社會住宅，以租代買！海外購屋原因？日本買房要現金買賣。日本0元買房？台灣以房養老政策 feat. 王國興地政士事務所</h3>
+                    <p><strong>-重點摘要：</strong></p>
+                    <ul>
+                        <li>▲青年首購條件？</li>
+                        <li>▲社會住宅，以租代買</li>
+                        <li>▲海外購屋原因？</li>
+                        <li>▲日本買房要現金買賣</li>
+                        <li>▲日本0元買房</li>
+                        <li>▲日本舊房有整修費用</li>
+                        <li>▲越南有投資市場</li>
+                        <li>▲台灣以房養老政策</li>
+                        <li>▲未來人的退休計劃住養老村？</li>
+                        <li>▲日本的下流老人</li>
+                    </ul>
+                    <p>本期大來賓：王國興<br>
+                    王國興地政士事務所<br>
+                    地址：新竹市自由路27巷39號<br>
+                    （三民網球場旁邊、監理所對面）<br>
+                    客服專線：0919-319413<br>
+                    所長：王國興地政士<br>
+                    新竹市政府頒發「107年新竹市優良地政士」</p>
+                </div>
+                <div class="fade-in" style="display:flex;justify-content:center;align-items:center;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BNans0bK8LM?si=rMQVMiVr_cq2VvTN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 員及地點區塊 -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title fade-in">代書事務所人員及地點</h2>
@@ -823,10 +868,10 @@
                     <p><strong>事務所名稱：</strong>王國興地政士事務所</p>
                     <p><strong>負責人：</strong>王國興 地政士</p>
                     <p><strong>地址：</strong> 新竹市自由路27巷39號</p>
-                    <p><strong>電話：</strong>03-5319193</p>
+                    <p><strong>電話：</strong>0919319413</p>
                     <p><strong>營業時間：</strong>週一至週日 09:00-21:00</p>
                     <h3>代書團隊成員</h3>
-                    <p><strong>王國興代書：</strong>0919319413</p>
+                    <p><strong>王國興代書：</strong>0919319413(所長)</p>
                     <p><strong>李思賢代書：</strong>0911067610</p>
                     <p><strong>李嘉惠代書：</strong>0987190905</p>
                     <p><strong>黃百興代書：</strong>0933267267</p>
@@ -852,7 +897,7 @@
             <div class="social-icon fb-icon">F</div>
             <div class="social-tooltip fb-tooltip">
                 <h4>點擊前往Facebook</h4>
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9Ijc1IiBjeT0iNzUiIHI9IjUwIiBmaWxsPSIjMTg3N0YyIi8+CjxwYXRoIGQ9Ik04Ny41IDQ1SDYyLjVWNjBINzUuNVY3NUg2Mi41VjkwSDg3LjVWNzVINzUuNVY2MEg4Ny41VjQ1WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Facebook Icon">
+                <div class="tooltip-icon fb-tooltip-icon">F</div>
             </div>
         </div>
         
