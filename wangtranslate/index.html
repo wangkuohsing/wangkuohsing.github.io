@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王國興地政士事務所 | 專業・誠信・效率</title>
+    <title>王國興地政士事務所 | 新竹代書推薦・31+年地政專家</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -1163,6 +1163,106 @@
             .services-grid { grid-template-columns: 1fr; }
             .photo-grid { grid-template-columns: repeat(3, 1fr); }
         }
+        /* ── SITUATION CARDS ──────────────────────── */
+        .sit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .sit-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 12px;
+            padding: 1.8rem 1.6rem;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sit-card:hover {
+            background: rgba(201,168,76,0.1);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        }
+
+        .sit-icon {
+            font-size: 2rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .sit-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+
+        .sit-card p {
+            font-size: 0.84rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .sit-cta {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── TRUST BAR ────────────────────────────── */
+        .trust-bar {
+            background: var(--gold);
+            padding: 1.2rem 2rem;
+        }
+
+        .trust-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .trust-item::before {
+            content: '✓';
+            width: 20px; height: 20px;
+            background: var(--ink);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sit-grid { grid-template-columns: 1fr 1fr; }
+            .trust-bar-inner { gap: 1.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .sit-grid { grid-template-columns: 1fr; }
+        }
+
     </style>
 </head>
 <body>
@@ -1179,10 +1279,10 @@
         </a>
         <ul class="nav-links">
             <li><a href="#introduction">首頁</a></li>
+            <li><a href="#situations">我的情況</a></li>
             <li><a href="#services">服務項目</a></li>
             <li><a href="#awards">獎項殊榮</a></li>
             <li><a href="#business">業務範圍</a></li>
-            <li><a href="#interview">專訪影片</a></li>
             <li><a href="#contact" class="nav-cta">立即諮詢</a></li>
         </ul>
         <button class="hamburger" onclick="toggleDrawer()" aria-label="選單">
@@ -1195,10 +1295,10 @@
 <div class="nav-drawer" id="navDrawer">
     <button class="drawer-close" onclick="toggleDrawer()">✕</button>
     <a href="#introduction" onclick="toggleDrawer()">首頁</a>
+    <a href="#situations" onclick="toggleDrawer()">我的情況</a>
     <a href="#services" onclick="toggleDrawer()">服務項目</a>
     <a href="#awards" onclick="toggleDrawer()">獎項殊榮</a>
     <a href="#business" onclick="toggleDrawer()">業務範圍</a>
-    <a href="#interview" onclick="toggleDrawer()">專訪影片</a>
     <a href="#contact" onclick="toggleDrawer()">聯絡資訊</a>
 </div>
 
@@ -1236,22 +1336,24 @@
 
         <!-- Text -->
         <div class="hero-text">
-            <div class="hero-badge">新竹市 ・ 地政專業服務</div>
+            <div class="hero-badge">新竹在地31+年・累計逾萬件地政案</div>
             <h1 class="hero-title">
-                <span class="gold">王國興</span><br>
-                地政士事務所
+                買賣、繼承、過戶<br>
+                找<span class="gold">王國興代書</span><br>
+                一次搞定
             </h1>
-            <p class="hero-subtitle">專業・誠信・效率</p>
+            <p class="hero-subtitle">新竹市首選地政士・全台特優地政士獎</p>
             <p class="hero-desc">
-                深耕新竹超過二十年，擁有豐富地政實務經驗。從土地登記、產權調查到不動產估價，我們以專業知識為基礎，以客戶需求為導向，為您的每一筆地政事務提供最完善的解決方案。
+                不知道流程怎麼走？費用怎麼算？文件準備什麼？<br>
+                一通電話，我們幫您從頭到尾處理乾淨。
             </p>
             <div class="hero-actions">
-                <a href="#contact" class="btn-primary">立即免費諮詢 →</a>
-                <a href="#services" class="btn-outline">了解服務項目</a>
+                <a href="tel:0919319413" class="btn-primary">📞 立即免費電話諮詢</a>
+                <a href="#situations" class="btn-outline">我的情況適合嗎？</a>
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-num">20+</div>
+                    <div class="stat-num">31+</div>
                     <div class="stat-label">年專業經驗</div>
                 </div>
                 <div class="stat-item">
@@ -1263,6 +1365,62 @@
                     <div class="stat-label">位專業代書</div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SITUATIONS ─────────────────────────────────── -->
+<section id="situations" style="background:var(--ink);padding:80px 2rem;">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow" style="color:var(--gold)">YOUR SITUATION</div>
+            <h2 class="section-title light">您是以下哪種情況？</h2>
+            <p style="color:rgba(255,255,255,0.45);margin-top:0.8rem;font-size:0.95rem;">每一種我們都處理過，打一通電話就能解決</p>
+            <div class="section-divider"></div>
+        </div>
+        <div class="sit-grid">
+            <a href="tel:0919319413" class="sit-card">
+                <div class="sit-icon">🏠</div>
+                <h3>買賣房屋過戶</h3>
+                <p>第一次買房不知道流程？簽完約之後還要做什麼？我們帶您一步一步走完所有手續。</p>
+                <div class="sit-cta">→ 立即詢問</div>
+            </a>
+            <a href="tel:0919319413" class="sit-card">
+                <div class="sit-icon">📜</div>
+                <h3>長輩過世・辦理繼承</h3>
+                <p>家人往生後，土地建物繼承手續繁瑣。我們協助您快速整理遺產、完成繼承登記。</p>
+                <div class="sit-cta">→ 立即詢問</div>
+            </a>
+            <a href="tel:0919319413" class="sit-card">
+                <div class="sit-icon">🎁</div>
+                <h3>房產贈與子女</h3>
+                <p>想把房子過戶給小孩？如何省稅？贈與和繼承哪個划算？我們幫您試算最佳方案。</p>
+                <div class="sit-cta">→ 立即詢問</div>
+            </a>
+            <a href="tel:0919319413" class="sit-card">
+                <div class="sit-icon">🏦</div>
+                <h3>貸款・抵押設定</h3>
+                <p>向銀行貸款需要設定抵押權，或是還清後要塗銷設定？交給我們，快速又正確。</p>
+                <div class="sit-cta">→ 立即詢問</div>
+            </a>
+            <a href="tel:0919319413" class="sit-card">
+                <div class="sit-icon">⚖️</div>
+                <h3>土地糾紛・界址爭議</h3>
+                <p>鄰居越界蓋建物？土地邊界不清楚？我們協助界址鑑定，保護您的土地權益。</p>
+                <div class="sit-cta">→ 立即詢問</div>
+            </a>
+            <a href="tel:0919319413" class="sit-card">
+                <div class="sit-icon">🔍</div>
+                <h3>買房前・產權調查</h3>
+                <p>買到有問題的房子怎麼辦？交屋前先做產權調查，查清抵押、查封、違章等風險。</p>
+                <div class="sit-cta">→ 立即詢問</div>
+            </a>
+        </div>
+        <div style="text-align:center;margin-top:3rem;">
+            <p style="color:rgba(255,255,255,0.4);font-size:0.88rem;margin-bottom:1rem;">以上情況都可以處理・其他問題歡迎直接詢問</p>
+            <a href="tel:0919319413" class="btn-primary" style="font-size:1.05rem;padding:1rem 2.5rem;">
+                📞 免費諮詢：0919-319-413
+            </a>
         </div>
     </div>
 </section>
@@ -1309,6 +1467,17 @@
         </div>
     </div>
 </section>
+
+<!-- ── TRUST BAR ────────────────────────────────── -->
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item">新竹在地深耕31+年</div>
+        <div class="trust-item">全台特優地政士 2025</div>
+        <div class="trust-item">週一至週日 09:00–21:00</div>
+        <div class="trust-item">免費電話諮詢</div>
+        <div class="trust-item">5位專業代書團隊</div>
+    </div>
+</div>
 
 <!-- ── AWARDS ────────────────────────────────────── -->
 <section id="awards" class="section">
@@ -1564,7 +1733,7 @@
 
 <!-- ── FOOTER ─────────────────────────────────────── -->
 <footer>
-    <p>© 2025 <span>王國興地政士事務所</span>・新竹市自由路27巷39號・0919-319-413</p>
+    <p>© 2026 <span>王國興地政士事務所</span>・新竹市自由路27巷39號・0919-319-413</p>
 </footer>
 
 <!-- ── MODAL ──────────────────────────────────────── -->
