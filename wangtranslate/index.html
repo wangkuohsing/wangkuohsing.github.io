@@ -3,748 +3,1396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王國興地政士事務所官網</title>
+    <title>王國興地政士事務所 | 專業・誠信・效率</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 字體統一微軟正黑體 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* font-family: 'Microsoft JhengHei', Arial, sans-serif !important; */
+        :root {
+            --ink: #1a1a2e;
+            --deep: #16213e;
+            --gold: #c9a84c;
+            --gold-light: #e8c96a;
+            --gold-dim: rgba(201,168,76,0.15);
+            --cream: #f5f0e8;
+            --cream2: #ede6d6;
+            --text: #2d2d2d;
+            --muted: #666;
+            --white: #ffffff;
+            --border: rgba(201,168,76,0.3);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /* 導航欄 */
+        /* ── NAVBAR ─────────────────────────────────── */
         .navbar {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            padding: 1rem 0;
+            top: 0; width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(26,26,46,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s ease;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-emblem {
+            width: 40px; height: 40px;
+            background: var(--gold);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: var(--ink);
+            letter-spacing: -1px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .logo-sub {
+            font-size: 0.65rem;
+            color: var(--gold);
+            font-weight: 300;
+            letter-spacing: 0.1em;
         }
 
         .nav-links {
-            display: flex;
             list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
+            display: flex;
+            gap: 0;
         }
 
         .nav-links a {
-            color: white;
+            display: block;
+            padding: 0.4rem 1.1rem;
+            color: rgba(255,255,255,0.75);
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 0.88rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            border-radius: 4px;
+            transition: all 0.25s;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: #ffd700;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background: var(--gold);
+            transform: translateX(-50%);
+            transition: width 0.3s;
         }
 
-        /* 主要內容區塊 */
-        .section {
-            padding: 80px 2rem;
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 60%; }
+
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--ink) !important;
+            font-weight: 700 !important;
+            padding: 0.5rem 1.3rem !important;
+            border-radius: 4px !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--gold-light) !important; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* ── HERO ─────────────────────────────────── */
+        #introduction {
             min-height: 100vh;
+            background: var(--deep);
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
         }
 
-        .container {
-            max-width: 1200px;
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(201,168,76,0.5) 49px, rgba(201,168,76,0.5) 50px),
+                repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(201,168,76,0.5) 49px, rgba(201,168,76,0.5) 50px);
+            pointer-events: none;
+        }
+
+        .hero-accent {
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-accent2 {
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1280px;
             margin: 0 auto;
-            width: 100%;
-        }
-
-        /* 介紹區塊 */
-        #introduction {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .intro-content {
+            padding: 4rem 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 5rem;
             align-items: center;
-        }
-
-        .intro-text {
-            text-align: left;
-        }
-
-        .intro-text h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .intro-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* 輪播圖樣式 */
-        .carousel-container {
             position: relative;
-            width: 100%;
-            height: 400px;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold-dim);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 0.35rem 1rem;
+            font-size: 0.78rem;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title .gold { color: var(--gold); }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.3em;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-desc {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            max-width: 440px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold);
+            color: var(--ink);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.75);
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.92rem;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat-item { text-align: left; }
+
+        .stat-num {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── CAROUSEL ─────────────────────────────── */
+        .carousel-wrap {
+            position: relative;
+        }
+
+        .carousel-frame {
+            position: relative;
+            border-radius: 12px;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            border: 1px solid rgba(201,168,76,0.2);
+            aspect-ratio: 4/3;
         }
 
         .carousel-slide {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.7s ease;
         }
 
-        .carousel-slide.active {
-            opacity: 1;
-        }
+        .carousel-slide.active { opacity: 1; }
 
         .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: rgba(255,255,255,0.1);
+            width: 100%; height: 100%;
+            object-fit: cover;
         }
 
-        .carousel-dots {
+        .carousel-overlay {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 16px; left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
         }
 
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
+        .c-dot {
+            width: 8px; height: 8px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.4);
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            border: none;
         }
 
-        .carousel-dot.active {
-            background: white;
+        .c-dot.active {
+            background: var(--gold);
+            width: 24px;
+            border-radius: 4px;
         }
 
-        .carousel-nav {
+        .c-btn {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 50%; transform: translateY(-50%);
             background: rgba(0,0,0,0.5);
             color: white;
             border: none;
-            padding: 10px 15px;
-            cursor: pointer;
+            width: 40px; height: 40px;
             border-radius: 50%;
+            cursor: pointer;
             font-size: 18px;
-            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+            backdrop-filter: blur(4px);
         }
 
-        .carousel-nav:hover {
-            background: rgba(0,0,0,0.7);
+        .c-btn:hover { background: var(--gold); color: var(--ink); }
+        .c-prev { left: 14px; }
+        .c-next { right: 14px; }
+
+        .award-ribbon {
+            position: absolute;
+            top: -10px; right: -10px;
+            background: var(--gold);
+            color: var(--ink);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(201,168,76,0.4);
+            z-index: 5;
         }
 
-        .carousel-prev {
-            left: 20px;
+        /* ── SECTION BASE ─────────────────────────── */
+        .section {
+            padding: 100px 2rem;
         }
 
-        .carousel-next {
-            right: 20px;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
-        .cta-button {
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-eyebrow {
             display: inline-block;
-            background: #ffd700;
-            color: #333;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-        }
-
-        /* 主要工作內容區塊 */
-        #services {
-            background: #f8f9fa;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e3c72;
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 900;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .section-title.light { color: var(--white); }
+
+        .section-divider {
+            width: 50px; height: 3px;
+            background: var(--gold);
+            margin: 1rem auto 0;
+        }
+
+        /* ── SERVICES ─────────────────────────────── */
+        #services {
+            background: var(--cream);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            color: #1e3c72;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .service-card p {
-            color: #666;
-        }
-
-        /* 獎項區塊 */
-        #awards {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-        }
-
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .award-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .award-icon {
-            font-size: 3rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-
-        /* 業務範圍區塊 */
-        #business {
-            background: #e8f4f8;
-        }
-
-        .business-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .business-list {
-            list-style: none;
-        }
-
-        .business-list li {
-            background: white;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border-radius: 5px;
-            border-left: 4px solid #1e3c72;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .business-image {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .business-image-item {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            border-radius: 8px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background: var(--cream2);
+            border: 1.5px solid var(--cream2);
+            border-radius: 12px;
             overflow: hidden;
         }
 
-        .business-image-item:hover {
-            transform: scale(1.05);
-        }
-
-        .business-image-item img {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        /* 圖片放大模態框 */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            transition: all 0.35s ease;
             position: relative;
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            top: 50%;
-            transform: translateY(-50%);
+            overflow: hidden;
         }
 
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .close {
+        .service-card::before {
+            content: '';
             position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 2001;
+            bottom: 0; left: 0;
+            width: 0; height: 3px;
+            background: var(--gold);
+            transition: width 0.4s ease;
         }
 
-        .close:hover {
-            color: #bbb;
-        }
+        .service-card:hover::before { width: 100%; }
+        .service-card:hover { background: #fdfaf4; }
 
-        /* 社群媒體浮窗 */
-        .social-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .social-button {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .social-button:hover {
-            transform: scale(1.1);
-        }
-
-        .social-button:hover .social-tooltip {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(-10px);
-        }
-
-        .social-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .service-icon {
+            width: 52px; height: 52px;
+            background: var(--gold-dim);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.7rem;
+        }
+
+        .service-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* ── AWARDS ───────────────────────────────── */
+        #awards {
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #awards::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(201,168,76,0.04) 59px, rgba(201,168,76,0.04) 60px);
+            pointer-events: none;
+        }
+
+        .awards-timeline {
+            position: relative;
+        }
+
+        .awards-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--border), var(--border), transparent);
+            transform: translateX(-50%);
+        }
+
+        .award-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .award-row:nth-child(odd) .award-item { grid-column: 1; }
+        .award-row:nth-child(odd) .award-empty { grid-column: 3; }
+        .award-row:nth-child(even) .award-item { grid-column: 3; }
+        .award-row:nth-child(even) .award-empty { grid-column: 1; }
+
+        .award-node {
+            width: 48px; height: 48px;
+            background: var(--ink);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .award-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .award-item:hover {
+            background: rgba(201,168,76,0.08);
+            border-color: var(--border);
+        }
+
+        .award-year {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .award-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+
+        .award-desc {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.6;
+        }
+
+        /* ── BUSINESS ─────────────────────────────── */
+        #business {
+            background: var(--cream);
+        }
+
+        .business-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .biz-list-wrap {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--cream2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .biz-list-header {
+            background: var(--ink);
+            padding: 1.2rem 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .biz-list-header h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .biz-list {
+            list-style: none;
+        }
+
+        .biz-list li {
+            padding: 0.9rem 1.8rem;
+            border-bottom: 1px solid var(--cream2);
+            font-size: 0.9rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s;
+        }
+
+        .biz-list li:last-child { border-bottom: none; }
+
+        .biz-list li:hover {
+            background: var(--cream);
+            padding-left: 2.2rem;
+        }
+
+        .biz-list li::before {
+            content: '';
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .gallery-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--cream2);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .photo-item {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .photo-item::after {
+            content: '🔍';
+            position: absolute;
+            inset: 0;
+            background: rgba(26,26,46,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-item:hover::after { opacity: 1; }
+
+        .photo-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .photo-item:hover img { transform: scale(1.08); }
+
+        /* ── INTERVIEW ────────────────────────────── */
+        #interview {
+            background: var(--deep);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #interview::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .interview-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .interview-info h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .interview-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.8rem;
+        }
+
+        .tag {
+            background: var(--gold-dim);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .video-wrap {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(201,168,76,0.2);
+            padding-bottom: 56.25%;
+            height: 0;
+            width: 100%;
+        }
+
+        /* ── CONTACT ──────────────────────────────── */
+        #contact {
+            background: var(--cream);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-card {
+            background: var(--ink);
+            border-radius: 12px;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .contact-card-header {
+            background: var(--gold);
+            padding: 1.5rem 2rem;
+        }
+
+        .contact-card-header h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--ink);
+        }
+
+        .contact-card-header p {
+            font-size: 0.78rem;
+            color: rgba(26,26,46,0.65);
+            margin-top: 2px;
+        }
+
+        .contact-card-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 12px;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            align-items: flex-start;
+        }
+
+        .contact-row:last-child { border-bottom: none; }
+
+        .contact-icon {
+            width: 32px; height: 32px;
+            background: var(--gold-dim);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-label {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2px;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-value {
+            font-size: 0.92rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .team-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            border: 1px solid var(--cream2);
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .team-section h4 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-section h4::before {
+            content: '';
+            width: 14px; height: 2px;
+            background: var(--gold);
+        }
+
+        .team-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0.8rem;
+            background: var(--cream);
+            border-radius: 6px;
+            font-size: 0.88rem;
+        }
+
+        .member-name {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .member-role {
+            font-size: 0.72rem;
+            color: var(--gold);
+            background: var(--gold-dim);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        .member-tel {
+            color: var(--muted);
+            font-size: 0.83rem;
+        }
+
+        .map-wrap {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--cream2);
+        }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 380px;
+            display: block;
+        }
+
+        /* ── MODAL ─────────────────────────────────── */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.open { display: flex; }
+
+        .modal-img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px; right: 24px;
+            background: rgba(255,255,255,0.1);
             color: white;
-            font-family: Arial, sans-serif;
+            border: none;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
         }
 
-        .fb-icon {
-            background: #1877F2;
+        .modal-close:hover { background: var(--gold); color: var(--ink); }
+
+        /* ── SOCIAL FLOAT ─────────────────────────── */
+        .social-float {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .line-icon {
-            background: #00C300;
+        .social-btn {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .social-icon {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .fb-icon { background: #1877F2; }
+        .line-icon { background: #00C300; }
+        .phone-icon { background: #e74c3c; }
+
+        .social-btn:hover .social-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
         }
 
         .social-tooltip {
             position: absolute;
-            bottom: 70px;
-            right: 0;
-            background: white;
+            right: 64px; top: 50%;
+            transform: translateY(-50%);
+            background: var(--white);
             border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 12px 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            white-space: nowrap;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-            width: 200px;
-            text-align: center;
+            transition: all 0.3s;
+            pointer-events: none;
         }
 
         .social-tooltip::after {
             content: '';
             position: absolute;
-            top: 100%;
-            right: 20px;
-            border: 10px solid transparent;
-            border-top-color: white;
+            right: -8px; top: 50%;
+            transform: translateY(-50%);
+            border: 8px solid transparent;
+            border-left-color: var(--white);
+            border-right: none;
         }
 
-        .social-tooltip h4 {
-            margin: 0 0 10px 0;
-            font-size: 14px;
+        .social-btn:hover .social-tooltip {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .social-tooltip img {
-            width: 150px;
-            height: 150px;
-            border-radius: 5px;
-            box-shadow: none;
+        .social-tooltip h4 { font-size: 0.82rem; color: var(--ink); margin-bottom: 6px; }
+        .social-tooltip img { width: 120px; height: 120px; display: block; }
+
+        /* ── FOOTER ───────────────────────────────── */
+        footer {
+            background: var(--deep);
+            border-top: 1px solid rgba(201,168,76,0.2);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.35);
+            font-size: 0.82rem;
         }
 
-        .line-tooltip h4 {
-            color: #00C300;
-        }
+        footer span { color: var(--gold); }
 
-        .fb-tooltip h4 {
-            color: #1877F2;
-        }
-
-        .tooltip-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: bold;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0 auto;
-        }
-
-        .fb-tooltip-icon {
-            background: #1877F2;
-        }
-
-        /* 人員及地點區塊 */
-        #contact {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            pointer-events: none;
-        }
-
-        #contact .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 1rem;
-            color: #ffd700;
-            font-size: 1.4rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .contact-info p {
-            margin-bottom: 0.8rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-info p:hover {
-            background: rgba(255,255,255,0.1);
-            padding-left: 10px;
-            border-radius: 5px;
-        }
-
-        .contact-info strong {
-            color: #ffd700;
-            font-weight: 600;
-        }
-
-        .map-container {
-            background: rgba(255,255,255,0.95);
-            padding: 1.5rem;
-            border-radius: 15px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .map-container iframe {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .intro-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .intro-text h1 {
-                font-size: 2rem;
-            }
-
-            .carousel-container {
-                height: 300px;
-            }
-
-            .business-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 60px 1rem;
-            }
-        }
-
-        /* 滾動動畫 */
-        .fade-in {
+        /* ── ANIMATIONS ───────────────────────────── */
+        .fade-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .fade-in.visible {
+        .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .fade-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-up:nth-child(3) { transition-delay: 0.2s; }
+        .fade-up:nth-child(4) { transition-delay: 0.3s; }
+        .fade-up:nth-child(5) { transition-delay: 0.4s; }
+        .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+        /* ── MOBILE NAV DRAWER ────────────────────── */
+        .nav-drawer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(26,26,46,0.98);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-drawer.open { display: flex; }
+
+        .nav-drawer a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .nav-drawer a:hover { color: var(--gold); }
+
+        .drawer-close {
+            position: absolute;
+            top: 22px; right: 22px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* ── RESPONSIVE ───────────────────────────── */
+        @media (max-width: 1024px) {
+            .business-layout { grid-template-columns: 1fr; }
+            .photo-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 3rem 1.2rem;
+            }
+
+            .hero-stats { gap: 1.5rem; }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .awards-timeline::before { display: none; }
+            .award-row {
+                grid-template-columns: 1fr;
+                margin-bottom: 1rem;
+            }
+            .award-node { display: none; }
+            .award-row:nth-child(odd) .award-empty,
+            .award-row:nth-child(even) .award-empty { display: none; }
+            .award-row:nth-child(odd) .award-item,
+            .award-row:nth-child(even) .award-item { grid-column: 1; }
+
+            .interview-layout,
+            .contact-layout { grid-template-columns: 1fr; }
+
+            .section { padding: 70px 1.2rem; }
+
+            .photo-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .photo-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
-    <!-- 導航欄 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">王國興地政士事務所</div>
-            <ul class="nav-links">
-                <li><a href="#introduction">介紹</a></li>
-                <li><a href="#services">主要工作內容</a></li>
-                <li><a href="#awards">獎項殊榮</a></li>
-                <li><a href="#business">業務範圍</a></li>
-                <li><a href="#contact">聯絡資訊</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- 介紹區塊 -->
-    <section id="introduction" class="section">
-        <div class="container">
-            <div class="intro-content fade-in">
-                <!-- 輪播圖 -->
-                <div class="carousel-container">
-                    <div class="carousel-slide active">
-                        <img src="image/01.webp" alt="王國興地政士事務所 - 專業服務">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="image/02.webp" alt="地政服務 - 土地登記">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="image/03.webp" alt="地政服務 - 土地測量">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="image/04.webp" alt="地政服務 - 不動產估價">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="image/05.webp" alt="地政服務 - 法律諮詢">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="image/06.webp" alt="地政服務 - 產權調查">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="image/07.webp" alt="地政服務 - 代書服務">
-                    </div>
-                    
-                    <!-- 導航按鈕 -->
-                    <button class="carousel-nav carousel-prev" onclick="changeSlide(-1)">‹</button>
-                    <button class="carousel-nav carousel-next" onclick="changeSlide(1)">›</button>
-                    
-                    <!-- 指示點 -->
-                    <div class="carousel-dots">
-                        <span class="carousel-dot active" onclick="currentSlide(1)"></span>
-                        <span class="carousel-dot" onclick="currentSlide(2)"></span>
-                        <span class="carousel-dot" onclick="currentSlide(3)"></span>
-                        <span class="carousel-dot" onclick="currentSlide(4)"></span>
-                        <span class="carousel-dot" onclick="currentSlide(5)"></span>
-                        <span class="carousel-dot" onclick="currentSlide(6)"></span>
-                        <span class="carousel-dot" onclick="currentSlide(7)"></span>
-                    </div>
-                </div>
-                
-                <!-- 介紹文字 -->
-                <div class="intro-text">
-                    <h1>王國興地政士事務所</h1>
-                    <p>專業、誠信、效率 - 您最信賴的地政服務夥伴</p>
-                    <p>我們擁有豐富的地政實務經驗，致力於為客戶提供最優質的土地登記、測量、估價等專業服務。以專業知識為基礎，以客戶需求為導向，為您的地政事務提供最完善的解決方案。</p>
-                    <a href="#contact" class="cta-button">立即諮詢</a>
+<!-- ── NAVBAR ─────────────────────────────────── -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#introduction" class="logo">
+            <div class="logo-emblem">王</div>
+            <div>
+                <div class="logo-text">王國興地政士事務所</div>
+                <div class="logo-sub">WANG KUO-HSING LAND OFFICE</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#introduction">首頁</a></li>
+            <li><a href="#services">服務項目</a></li>
+            <li><a href="#awards">獎項殊榮</a></li>
+            <li><a href="#business">業務範圍</a></li>
+            <li><a href="#interview">專訪影片</a></li>
+            <li><a href="#contact" class="nav-cta">立即諮詢</a></li>
+        </ul>
+        <button class="hamburger" onclick="toggleDrawer()" aria-label="選單">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-drawer" id="navDrawer">
+    <button class="drawer-close" onclick="toggleDrawer()">✕</button>
+    <a href="#introduction" onclick="toggleDrawer()">首頁</a>
+    <a href="#services" onclick="toggleDrawer()">服務項目</a>
+    <a href="#awards" onclick="toggleDrawer()">獎項殊榮</a>
+    <a href="#business" onclick="toggleDrawer()">業務範圍</a>
+    <a href="#interview" onclick="toggleDrawer()">專訪影片</a>
+    <a href="#contact" onclick="toggleDrawer()">聯絡資訊</a>
+</div>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section id="introduction">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-accent2"></div>
+    <div class="hero-container">
+        <!-- Carousel -->
+        <div class="carousel-wrap">
+            <div class="award-ribbon">🏆 2025全台特優地政士</div>
+            <div class="carousel-frame" id="carouselFrame">
+                <div class="carousel-slide active"><img src="image/01.webp" alt="王國興地政士事務所"></div>
+                <div class="carousel-slide"><img src="image/02.webp" alt="地政服務 - 土地登記"></div>
+                <div class="carousel-slide"><img src="image/03.webp" alt="地政服務 - 土地測量"></div>
+                <div class="carousel-slide"><img src="image/04.webp" alt="地政服務 - 不動產估價"></div>
+                <div class="carousel-slide"><img src="image/05.webp" alt="地政服務 - 法律諮詢"></div>
+                <div class="carousel-slide"><img src="image/06.webp" alt="地政服務 - 產權調查"></div>
+                <div class="carousel-slide"><img src="image/07.webp" alt="地政服務 - 代書服務"></div>
+                <div class="carousel-overlay"></div>
+                <button class="c-btn c-prev" onclick="changeSlide(-1)">&#8249;</button>
+                <button class="c-btn c-next" onclick="changeSlide(1)">&#8250;</button>
+                <div class="carousel-controls" id="dotContainer">
+                    <button class="c-dot active" onclick="goSlide(0)"></button>
+                    <button class="c-dot" onclick="goSlide(1)"></button>
+                    <button class="c-dot" onclick="goSlide(2)"></button>
+                    <button class="c-dot" onclick="goSlide(3)"></button>
+                    <button class="c-dot" onclick="goSlide(4)"></button>
+                    <button class="c-dot" onclick="goSlide(5)"></button>
+                    <button class="c-dot" onclick="goSlide(6)"></button>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- 主要工作內容區塊 -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">主要工作內容</h2>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <h3>土地登記</h3>
-                    <p>辦理各類土地及建物所有權移轉登記、抵押權設定登記、地上權登記等相關業務，確保您的產權安全。</p>
+        <!-- Text -->
+        <div class="hero-text">
+            <div class="hero-badge">新竹市 ・ 地政專業服務</div>
+            <h1 class="hero-title">
+                <span class="gold">王國興</span><br>
+                地政士事務所
+            </h1>
+            <p class="hero-subtitle">專業・誠信・效率</p>
+            <p class="hero-desc">
+                深耕新竹超過二十年，擁有豐富地政實務經驗。從土地登記、產權調查到不動產估價，我們以專業知識為基礎，以客戶需求為導向，為您的每一筆地政事務提供最完善的解決方案。
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">立即免費諮詢 →</a>
+                <a href="#services" class="btn-outline">了解服務項目</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-num">20+</div>
+                    <div class="stat-label">年專業經驗</div>
                 </div>
-                <div class="service-card fade-in">
-                    <h3>土地測量</h3>
-                    <p>提供精確的土地測量服務，包括地籍測量、建物測量、界址鑑定等，為您的土地權益提供保障。</p>
+                <div class="stat-item">
+                    <div class="stat-num">7+</div>
+                    <div class="stat-label">國家級獎項</div>
                 </div>
-                <div class="service-card fade-in">
-                    <h3>不動產估價</h3>
-                    <p>專業的不動產估價服務，為買賣、徵收、課稅等提供公正客觀的價值評估。</p>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>法律諮詢</h3>
-                    <p>提供地政相關法律諮詢服務，協助您了解相關法規，維護自身權益。</p>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>產權調查</h3>
-                    <p>詳細的產權調查服務，協助您了解土地及建物的權利狀況，避免交易風險。</p>
-                </div>
-                <div class="service-card fade-in">
-                    <h3>代書服務</h3>
-                    <p>專業的代書服務，協助您辦理各類地政相關文件，讓您省時省力又安心。</p>
+                <div class="stat-item">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">位專業代書</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 獎項及殊榮區塊 -->
-    <section id="awards" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">獲得獎項及殊榮</h2>
-            <div class="awards-grid">
-                <div class="award-card fade-in">
-                    <div class="award-icon">🏆</div>
-                    <h3>2025年 全台特優地政士獎</h3>
-                    <p>榮獲全國最高榮譽「全台特優地政士」獎，肯定我們在地政服務領域的卓越表現。</p>
+<!-- ── SERVICES ──────────────────────────────────── -->
+<section id="services" class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">OUR SERVICES</div>
+            <h2 class="section-title">主要工作內容</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-up">
+                <div class="service-icon">📋</div>
+                <h3>土地登記</h3>
+                <p>辦理各類土地及建物所有權移轉登記、抵押權設定登記、地上權登記等相關業務，確保您的產權安全有保障。</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">📐</div>
+                <h3>土地測量</h3>
+                <p>提供精確的土地測量服務，包括地籍測量、建物測量、界址鑑定等，為您的土地權益提供最嚴謹的保障。</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">💰</div>
+                <h3>不動產估價</h3>
+                <p>專業的不動產估價服務，為買賣、徵收、課稅等需求提供公正客觀的價值評估，依法執業。</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">⚖️</div>
+                <h3>法律諮詢</h3>
+                <p>提供地政相關法律諮詢服務，協助您深入了解相關法規，有效維護自身合法權益。</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">🔍</div>
+                <h3>產權調查</h3>
+                <p>詳細的產權調查服務，協助您了解土地及建物的完整權利狀況，有效規避交易風險。</p>
+            </div>
+            <div class="service-card fade-up">
+                <div class="service-icon">📝</div>
+                <h3>代書服務</h3>
+                <p>專業的代書服務，協助您辦理各類地政相關文件，讓您在地產交易中省時省力又安心。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── AWARDS ────────────────────────────────────── -->
+<section id="awards" class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow" style="color:var(--gold)">ACHIEVEMENTS</div>
+            <h2 class="section-title light">獲得獎項及殊榮</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="awards-timeline">
+            <div class="award-row fade-up">
+                <div class="award-item">
+                    <div class="award-year">2025</div>
+                    <div class="award-name">🏆 全台特優地政士獎</div>
+                    <div class="award-desc">榮獲全國最高榮譽「全台特優地政士」獎，肯定我們在地政服務領域的卓越表現。</div>
                 </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">📜</div>
-                    <h3>2024年 新竹區優等地政士獎</h3>
-                    <p>榮獲永慶不動產「新竹區優等地政士」獎，持續獲得業界肯定。</p>
+                <div class="award-node">🏆</div>
+                <div class="award-empty"></div>
+            </div>
+            <div class="award-row fade-up">
+                <div class="award-empty"></div>
+                <div class="award-node">📜</div>
+                <div class="award-item">
+                    <div class="award-year">2024</div>
+                    <div class="award-name">📜 新竹區優等地政士獎</div>
+                    <div class="award-desc">榮獲永慶不動產「新竹區優等地政士」獎，持續獲得業界最高肯定。</div>
                 </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">🤝</div>
-                    <h3>2018年 新竹市優良地政士獎</h3>
-                    <p>榮獲「新竹市優良地政士」獎，在地服務品質獲得官方認證。</p>
+            </div>
+            <div class="award-row fade-up">
+                <div class="award-item">
+                    <div class="award-year">2018</div>
+                    <div class="award-name">🤝 新竹市優良地政士獎</div>
+                    <div class="award-desc">榮獲「新竹市優良地政士」獎，在地服務品質獲得官方認證與肯定。</div>
                 </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">🏅</div>
-                    <h3>2016年 樂群敬業獎</h3>
-                    <p>榮獲全國地政士聯合會「樂群敬業」獎，肯定團隊合作精神。</p>
+                <div class="award-node">🤝</div>
+                <div class="award-empty"></div>
+            </div>
+            <div class="award-row fade-up">
+                <div class="award-empty"></div>
+                <div class="award-node">🏅</div>
+                <div class="award-item">
+                    <div class="award-year">2016</div>
+                    <div class="award-name">🏅 樂群敬業獎 & 高才碩望獎</div>
+                    <div class="award-desc">同年榮獲全國地政士聯合會「樂群敬業」獎及新竹市地政士公會「高才碩望」獎，雙獎肯定。</div>
                 </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">🎖️</div>
-                    <h3>2016年 高才碩望獎</h3>
-                    <p>榮獲新竹市地政士公會「高才碩望」獎，專業能力獲得同業認可。</p>
+            </div>
+            <div class="award-row fade-up">
+                <div class="award-item">
+                    <div class="award-year">2015</div>
+                    <div class="award-name">💎 全國優良地政士獎</div>
+                    <div class="award-desc">榮獲永慶集團「全國優良地政士」獎，全國性服務品質獲得最高肯定。</div>
                 </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">💎</div>
-                    <h3>2015年 全國優良地政士獎</h3>
-                    <p>榮獲永慶集團「全國優良地政士」獎，全國性服務品質獲得肯定。</p>
-                </div>
-                <div class="award-card fade-in">
-                    <div class="award-icon">🔒</div>
-                    <h3>2014年 新竹區安全保障獎</h3>
-                    <p>榮獲太平洋房屋「新竹區安全保障」獎，為客戶權益提供最安全的保障。</p>
+                <div class="award-node">💎</div>
+                <div class="award-empty"></div>
+            </div>
+            <div class="award-row fade-up">
+                <div class="award-empty"></div>
+                <div class="award-node">🔒</div>
+                <div class="award-item">
+                    <div class="award-year">2014</div>
+                    <div class="award-name">🔒 新竹區安全保障獎</div>
+                    <div class="award-desc">榮獲太平洋房屋「新竹區安全保障」獎，為客戶權益提供最安全可靠的保障。</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 業務範圍及服務內容區塊 -->
-    <section id="business" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">業務範圍及服務內容</h2>
-            <div class="business-content">
-                <div class="business-list fade-in">
-                    <h3>核心業務</h3>
-                    <ul>
+<!-- ── BUSINESS ───────────────────────────────────── -->
+<section id="business" class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">SCOPE OF SERVICES</div>
+            <h2 class="section-title">業務範圍及服務內容</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="business-layout">
+            <div class="fade-up">
+                <div class="biz-list-wrap">
+                    <div class="biz-list-header">
+                        <span style="color:var(--gold);font-size:1rem">◈</span>
+                        <h3>核心業務項目</h3>
+                    </div>
+                    <ul class="biz-list">
                         <li>土地及建物所有權移轉登記</li>
                         <li>抵押權設定、變更、塗銷登記</li>
                         <li>地上權、地役權設定登記</li>
@@ -757,268 +1405,265 @@
                         <li>地政相關法律諮詢</li>
                     </ul>
                 </div>
-                <div class="business-image fade-in">
-                    <div class="business-image-item" onclick="openModal('image/wang01.webp')">
-                        <img src="image/wang01.webp" alt="業務圖片1">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang02.webp')">
-                        <img src="image/wang02.webp" alt="業務圖片2">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang03.webp')">
-                        <img src="image/wang03.webp" alt="業務圖片3">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang04.webp')">
-                        <img src="image/wang04.webp" alt="業務圖片4">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang05.webp')">
-                        <img src="image/wang05.webp" alt="業務圖片5">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang06.webp')">
-                        <img src="image/wang06.webp" alt="業務圖片6">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang07.webp')">
-                        <img src="image/wang07.webp" alt="業務圖片7">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang08.webp')">
-                        <img src="image/wang08.webp" alt="業務圖片8">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang09.webp')">
-                        <img src="image/wang09.webp" alt="業務圖片9">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang10.webp')">
-                        <img src="image/wang10.webp" alt="業務圖片10">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang11.webp')">
-                        <img src="image/wang11.webp" alt="業務圖片11">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang12.webp')">
-                        <img src="image/wang12.webp" alt="業務圖片12">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang13.webp')">
-                        <img src="image/wang13.webp" alt="業務圖片13">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang14.webp')">
-                        <img src="image/wang14.webp" alt="業務圖片14">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang15.webp')">
-                        <img src="image/wang15.webp" alt="業務圖片15">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang16.webp')">
-                        <img src="image/wang16.webp" alt="業務圖片16">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang17.webp')">
-                        <img src="image/wang17.webp" alt="業務圖片17">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang18.webp')">
-                        <img src="image/wang18.webp" alt="業務圖片18">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang19.webp')">
-                        <img src="image/wang19.webp" alt="業務圖片19">
-                    </div>
-                    <div class="business-image-item" onclick="openModal('image/wang20.webp')">
-                        <img src="image/wang20.webp" alt="業務圖片20">
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 專訪影片區塊 -->
-    <section id="interview" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">專訪影片</h2>
-            <div class="business-content">
-                <div class="fade-in" style="text-align:left;">
-                    <h3>【青年購屋貸款】青年首購。青年首購條件？首購利率？社會住宅，以租代買！海外購屋原因？日本買房要現金買賣。日本0元買房？台灣以房養老政策 feat. 王國興地政士事務所</h3>
-                    <p><strong>-重點摘要：</strong></p>
-                    <ul>
-                        <li>▲青年首購條件？</li>
-                        <li>▲社會住宅，以租代買</li>
-                        <li>▲海外購屋原因？</li>
-                        <li>▲日本買房要現金買賣</li>
-                        <li>▲日本0元買房</li>
-                        <li>▲日本舊房有整修費用</li>
-                        <li>▲越南有投資市場</li>
-                        <li>▲台灣以房養老政策</li>
-                        <li>▲未來人的退休計劃住養老村？</li>
-                        <li>▲日本的下流老人</li>
-                    </ul>
-                    <p>本期大來賓：王國興<br>
-                    王國興地政士事務所<br>
-                    地址：新竹市自由路27巷39號<br>
-                    （三民網球場旁邊、監理所對面）<br>
-                    客服專線：0919-319413<br>
-                    所長：王國興地政士<br>
-                    新竹市政府頒發「107年新竹市優良地政士」</p>
+            <div class="fade-up">
+                <div class="gallery-title">業務實績相片集</div>
+                <div class="photo-grid">
+                    <div class="photo-item" onclick="openModal('image/wang01.webp')"><img src="image/wang01.webp" alt="業務圖片1" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang02.webp')"><img src="image/wang02.webp" alt="業務圖片2" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang03.webp')"><img src="image/wang03.webp" alt="業務圖片3" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang04.webp')"><img src="image/wang04.webp" alt="業務圖片4" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang05.webp')"><img src="image/wang05.webp" alt="業務圖片5" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang06.webp')"><img src="image/wang06.webp" alt="業務圖片6" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang07.webp')"><img src="image/wang07.webp" alt="業務圖片7" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang08.webp')"><img src="image/wang08.webp" alt="業務圖片8" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang09.webp')"><img src="image/wang09.webp" alt="業務圖片9" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang10.webp')"><img src="image/wang10.webp" alt="業務圖片10" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang11.webp')"><img src="image/wang11.webp" alt="業務圖片11" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang12.webp')"><img src="image/wang12.webp" alt="業務圖片12" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang13.webp')"><img src="image/wang13.webp" alt="業務圖片13" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang14.webp')"><img src="image/wang14.webp" alt="業務圖片14" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang15.webp')"><img src="image/wang15.webp" alt="業務圖片15" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang16.webp')"><img src="image/wang16.webp" alt="業務圖片16" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang17.webp')"><img src="image/wang17.webp" alt="業務圖片17" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang18.webp')"><img src="image/wang18.webp" alt="業務圖片18" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang19.webp')"><img src="image/wang19.webp" alt="業務圖片19" loading="lazy"></div>
+                    <div class="photo-item" onclick="openModal('image/wang20.webp')"><img src="image/wang20.webp" alt="業務圖片20" loading="lazy"></div>
                 </div>
-                <div class="fade-in" style="display:flex;justify-content:center;align-items:center;">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BNans0bK8LM?si=rMQVMiVr_cq2VvTN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 員及地點區塊 -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">代書事務所人員及地點</h2>
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>聯絡資訊</h3>
-                    <p><strong>事務所名稱：</strong>王國興地政士事務所</p>
-                    <p><strong>負責人：</strong>王國興 地政士</p>
-                    <p><strong>地址：</strong> 新竹市自由路27巷39號</p>
-                    <p><strong>電話：</strong>0919319413</p>
-                    <p><strong>營業時間：</strong>週一至週日 09:00-21:00</p>
-                    <h3>代書團隊成員</h3>
-                    <p><strong>王國興代書：</strong>0919319413(所長)</p>
-                    <p><strong>李思賢代書：</strong>0911067610</p>
-                    <p><strong>李嘉惠代書：</strong>0987190905</p>
-                    <p><strong>黃百興代書：</strong>0933267267</p>
-                    <p><strong>王威程代書：</strong>0919319413</p>
-                </div>
-                <div >
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.548850444332!2d120.97818967569988!3d24.81089737796164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835b83853f2e5%3A0x1325e378638e0756!2z546L5ZyL6IiI5Luj5pu45Zyw5pS_5aOr5LqL5YuZ5omA!5e0!3m2!1szh-TW!2sus!4v1752334065484!5m2!1szh-TW!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 圖片放大模態框 -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
-    <!-- 社群媒體浮窗 -->
-    <div class="social-float">
-        <!-- Facebook浮窗 -->
-        <div class="social-button" onclick="openFacebook()">
-            <div class="social-icon fb-icon">F</div>
-            <div class="social-tooltip fb-tooltip">
-                <h4>點擊前往Facebook</h4>
-                <div class="tooltip-icon fb-tooltip-icon">F</div>
-            </div>
-        </div>
-        
-        <!-- LINE浮窗 -->
-        <div class="social-button" onclick="openLine()">
-            <div class="social-icon line-icon">L</div>
-            <div class="social-tooltip line-tooltip">
-                <h4>掃描QR Code加入LINE</h4>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://line.me/ti/p/cECJQFTD_Y" alt="LINE QR Code">
             </div>
         </div>
     </div>
+</section>
 
-    <script>
-        // 輪播圖功能
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const totalSlides = slides.length;
+<!-- ── INTERVIEW ──────────────────────────────────── -->
+<section id="interview" class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow" style="color:var(--gold)">MEDIA</div>
+            <h2 class="section-title light">專訪影片</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="interview-layout">
+            <div class="interview-info fade-up">
+                <h3>【青年購屋貸款】青年首購條件？社會住宅、以租代買、海外購屋、台灣以房養老政策</h3>
+                <div class="interview-tags">
+                    <span class="tag">青年首購</span>
+                    <span class="tag">社會住宅</span>
+                    <span class="tag">以租代買</span>
+                    <span class="tag">海外購屋</span>
+                    <span class="tag">日本買房</span>
+                    <span class="tag">以房養老</span>
+                    <span class="tag">越南投資</span>
+                </div>
+                <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.9;margin-bottom:1.5rem;">
+                    本期專訪涵蓋青年首購條件、社會住宅以租代買、海外（日本、越南）購屋須知，以及台灣以房養老政策等熱門議題。
+                </p>
+                <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:10px;padding:1.2rem 1.5rem;">
+                    <p style="font-size:0.82rem;color:rgba(255,255,255,0.55);margin-bottom:6px;letter-spacing:0.05em">本期來賓</p>
+                    <p style="color:var(--gold);font-family:'Noto Serif TC',serif;font-weight:700;font-size:1.05rem;">王國興 地政士</p>
+                    <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-top:4px;">新竹市政府頒發「107年新竹市優良地政士」</p>
+                </div>
+            </div>
+            <div class="fade-up">
+                <div class="video-wrap">
+                    <iframe src="https://www.youtube.com/embed/BNans0bK8LM?si=sGME_KaAWYZ9Asrf"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                        style="width:100%;height:100%;position:absolute;top:0;left:0;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        function showSlide(index) {
-            // 隱藏所有幻燈片
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // 顯示當前幻燈片
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
+<!-- ── CONTACT ────────────────────────────────────── -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-eyebrow">CONTACT US</div>
+            <h2 class="section-title">聯絡資訊 & 地點</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="contact-layout">
+            <div class="fade-up">
+                <div class="contact-card">
+                    <div class="contact-card-header">
+                        <h3>王國興地政士事務所</h3>
+                        <p>週一至週日 09:00–21:00 全年無休</p>
+                    </div>
+                    <div class="contact-card-body">
+                        <div class="contact-row">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <div class="contact-label">地址</div>
+                                <div class="contact-value">新竹市自由路27巷39號<br><span style="font-size:0.78rem;color:rgba(255,255,255,0.4)">(三民網球場旁・監理所對面)</span></div>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <div class="contact-label">客服專線（所長）</div>
+                                <div class="contact-value">0919-319-413</div>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <div class="contact-icon">🕘</div>
+                            <div>
+                                <div class="contact-label">營業時間</div>
+                                <div class="contact-value">週一至週日 09:00 – 21:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        function changeSlide(direction) {
-            currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
-            showSlide(currentSlideIndex);
-        }
+                <div class="team-section fade-up">
+                    <h4>代書團隊成員</h4>
+                    <div class="team-list">
+                        <div class="team-member">
+                            <span class="member-name">王國興 代書</span>
+                            <span class="member-role">所長</span>
+                            <span class="member-tel">0919-319-413</span>
+                        </div>
+                        <div class="team-member">
+                            <span class="member-name">李思賢 代書</span>
+                            <span class="member-role">代書</span>
+                            <span class="member-tel">0911-067-610</span>
+                        </div>
+                        <div class="team-member">
+                            <span class="member-name">李嘉惠 代書</span>
+                            <span class="member-role">代書</span>
+                            <span class="member-tel">0987-190-905</span>
+                        </div>
+                        <div class="team-member">
+                            <span class="member-name">黃百興 代書</span>
+                            <span class="member-role">代書</span>
+                            <span class="member-tel">0933-267-267</span>
+                        </div>
+                        <div class="team-member">
+                            <span class="member-name">王威程 代書</span>
+                            <span class="member-role">代書</span>
+                            <span class="member-tel">0919-319-413</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        function currentSlide(index) {
-            currentSlideIndex = index - 1;
-            showSlide(currentSlideIndex);
-        }
+            <div class="fade-up">
+                <div class="map-wrap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.548850444332!2d120.97818967569988!3d24.81089737796164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346835b83853f2e5%3A0x1325e378638e0756!2z546L5ZyL6IiI5Luj5pu45Zyw5pS_5aOr5LqL5YuZ5omA!5e0!3m2!1szh-TW!2sus!4v1752334065484!5m2!1szh-TW!2sus"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        // 自動輪播
-        function autoSlide() {
-            changeSlide(1);
-        }
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+    <p>© 2025 <span>王國興地政士事務所</span>・新竹市自由路27巷39號・0919-319-413</p>
+</footer>
 
-        // 每5秒自動切換
-        setInterval(autoSlide, 5000);
+<!-- ── MODAL ──────────────────────────────────────── -->
+<div class="modal" id="modal" onclick="closeModal(this)">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img class="modal-img" id="modalImg" src="" alt="">
+</div>
 
-        // 圖片放大功能
-        function openModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'block';
-            modalImg.src = imageSrc;
-            document.body.style.overflow = 'hidden'; // 防止背景滾動
-        }
+<!-- ── SOCIAL FLOAT ───────────────────────────────── -->
+<div class="social-float">
+    <div class="social-btn">
+        <a href="tel:0919319413" style="text-decoration:none;">
+            <div class="social-icon phone-icon">📞</div>
+        </a>
+        <div class="social-tooltip">
+            <h4>點擊直接撥打電話</h4>
+            <p style="font-size:0.88rem;color:#1a1a2e;font-weight:700;margin-top:4px;">0919-319-413</p>
+        </div>
+    </div>
+    <div class="social-btn" onclick="openFacebook()">
+        <div class="social-icon fb-icon">f</div>
+        <div class="social-tooltip">
+            <h4>前往 Facebook 粉絲頁</h4>
+        </div>
+    </div>
+    <div class="social-btn">
+        <div class="social-icon line-icon" onclick="openLine()">L</div>
+        <div class="social-tooltip">
+            <h4>加入 LINE 諮詢</h4>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://line.me/ti/p/cECJQFTD_Y" alt="LINE QR Code">
+        </div>
+    </div>
+</div>
 
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // 恢復背景滾動
-        }
+<script>
+    /* ── Carousel ─── */
+    let cur = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.c-dot');
+    const total = slides.length;
 
-        // 點擊模態框背景關閉
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
+    function showSlide(n) {
+        slides[cur].classList.remove('active');
+        dots[cur].classList.remove('active');
+        cur = (n + total) % total;
+        slides[cur].classList.add('active');
+        dots[cur].classList.add('active');
+    }
+
+    function changeSlide(d) { showSlide(cur + d); }
+    function goSlide(n) { showSlide(n); }
+
+    setInterval(() => changeSlide(1), 5000);
+
+    /* ── Modal ─── */
+    function openModal(src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(el) {
+        if (el && el !== document.getElementById('modal')) return;
+        document.getElementById('modal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* ── Social ─── */
+    function openFacebook() { window.open('https://www.facebook.com/share/19VyjCzQQn/?mibextid=wwXIfr', '_blank'); }
+    function openLine() { window.open('https://line.me/ti/p/cECJQFTD_Y', '_blank'); }
+
+    /* ── Mobile Drawer ─── */
+    function toggleDrawer() {
+        document.getElementById('navDrawer').classList.toggle('open');
+        document.body.style.overflow =
+            document.getElementById('navDrawer').classList.contains('open') ? 'hidden' : '';
+    }
+
+    /* ── Smooth Scroll ─── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    /* ── Fade-up on scroll ─── */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
         });
+    }, { threshold: 0.12 });
 
-        // ESC鍵關閉模態框
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Facebook功能
-        function openFacebook() {
-            const fbUrl = 'https://www.facebook.com/share/19VyjCzQQn/?mibextid=wwXIfr';
-            window.open(fbUrl, '_blank');
-        }
-
-        // LINE功能
-        function openLine() {
-            const lineUrl = 'https://line.me/ti/p/cECJQFTD_Y';
-            window.open(lineUrl, '_blank');
-        }
-
-        // 滾動動畫效果
-        function checkFadeIn() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // 平滑滾動
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // 監聽滾動事件
-        window.addEventListener('scroll', checkFadeIn);
-        
-        // 頁面載入時檢查
-        window.addEventListener('load', checkFadeIn);
-    </script>
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 </body>
-</html> 
+</html>
